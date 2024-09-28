@@ -1,10 +1,30 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import Header from "./Header"
+import { checkValidData } from "../utils/validate"
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true)
+  const [errMessage, setErrMessagge] = useState(null)
+  const email = useRef(null)
+  const password = useRef(null)
+  const name = useRef(null)
+
+  //Toggle the form
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm)
+  }
+
+  //handle submit
+  const handleButtonClick = () => {
+    //checking validation
+
+    const res = checkValidData(
+      email.current.value,
+      password.current.value,
+      name.current.value
+    )
+
+    setErrMessagge(res)
   }
   return (
     <div>
@@ -15,17 +35,22 @@ const Login = () => {
           alt=""
         />
       </div>
-      <form className="w-3/12 absolute p-12 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-3/12 absolute p-12 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
+      >
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         <input
+          ref={email}
           type="text"
           placeholder="Email Address"
           className="p-4 my-2 w-full bg-gray-700"
         />
         {!isSignInForm && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-2 w-full bg-gray-700"
@@ -33,11 +58,16 @@ const Login = () => {
         )}
 
         <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="p-4 my-2 w-full bg-gray-700"
         />
-        <button className="p-4 my-6 w-full bg-red-600 rounded-lg">
+        <p className="text-red-500 text-lg font-bold py-2">{errMessage}</p>
+        <button
+          className="p-4 my-6 w-full bg-red-600 rounded-lg"
+          onClick={handleButtonClick}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
