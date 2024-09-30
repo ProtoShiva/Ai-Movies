@@ -1,16 +1,19 @@
 import React from "react"
+import { lang } from "../utils/langConstants"
+import { useSelector } from "react-redux"
 
 const GptSearchBar = () => {
+  const langKey = useSelector((store) => store.config.lang)
   return (
     <div className="pt-[10%] flex justify-center">
       <form className="w-1/2 bg-black grid grid-cols-12">
         <input
           type="text"
-          placeholder="What is your taste today?"
+          placeholder={lang[langKey].gptPlaceholder}
           className="p-4 m-4 col-span-9"
         />
         <button className="py-2 m-4 px-5 col-span-3 bg-red-700 text-white rounded-lg">
-          Search
+          {lang[langKey].search}
         </button>
       </form>
     </div>

@@ -4,13 +4,15 @@ import { useNavigate } from "react-router-dom"
 import { onAuthStateChanged, signOut } from "firebase/auth"
 import { useDispatch, useSelector } from "react-redux"
 import { addUser, removeUser } from "../redux/slices/userSlice"
-import { LOGO } from "../utils/constants"
+import { langOptions, LOGO } from "../utils/constants"
 import { toggleGptSearch } from "../redux/slices/gptSlice"
+import { changeLanguages } from "../redux/slices/configSlice"
 
 const Header = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const userInfo = useSelector((store) => store.user)
+  const gptSearch = useSelector((store) => store.gpt.showGptSearch)
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -47,16 +49,32 @@ const Header = () => {
     }
   }, [])
 
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguages(e.target.value))
+  }
+
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-full z-10 flex justify-between">
       <img className="w-48" src={LOGO} alt="netflix-logo" />
       {userInfo && (
         <div className="flex items-center gap-12">
+          {gptSearch && (
+            <select
+              className="bg-gray-300 px-2"
+              onChange={handleLanguageChange}
+            >
+              {langOptions.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="py-2 px-4 bg-teal-500 text-white rounded-lg"
             onClick={() => dispatch(toggleGptSearch())}
           >
-            GPT Search
+            {gptSearch ? "HomePage" : "GPT Search"}
           </button>
           <div className="flex items-center gap-3">
             <img className="size-12" src={userInfo.photoURL} alt="userIcon" />
