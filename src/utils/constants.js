@@ -1,6 +1,3 @@
-import dotenv from "dotenv"
-
-dotenv.config()
 export const LOGO =
   "https://cdn.prod.website-files.com/5ee732bebd9839b494ff27cd/5ee732bebd98393d75ff281d_580b57fcd9996e24bc43c529.png"
 export const USER_AVATAR =
@@ -13,7 +10,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization: "Bearer " + process.env.REACT_APP_TMDB_TOKEN,
+    Authorization: "Bearer " + import.meta.env.VITE_TMDB_TOKEN,
   },
 }
 
@@ -25,5 +22,3 @@ export const langOptions = [
   { identifier: "spanish", name: "Spanish" },
   { identifier: "german", name: "German" },
 ]
-
-export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY

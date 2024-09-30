@@ -1,12 +1,10 @@
 import React, { useRef } from "react"
 import { lang } from "../utils/langConstants"
 import { useDispatch, useSelector } from "react-redux"
-import { API_OPTIONS, GEMINI_KEY } from "../utils/constants"
+import { API_OPTIONS } from "../utils/constants"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import { addGptMovieResult } from "../redux/slices/gptSlice"
-import dotenv from "dotenv"
 
-dotenv.config()
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang)
   const searchText = useRef(null)
@@ -22,7 +20,8 @@ const GptSearchBar = () => {
   }
 
   const handleGptSearchClick = async () => {
-    const genAI = new GoogleGenerativeAI(GEMINI_KEY)
+    const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY)
+
     //Make an API call to GPT and get results
     const gptQuery =
       "Act as a Movie Recommendation systam and suggest some movies for the query" +
