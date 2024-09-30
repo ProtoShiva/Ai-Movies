@@ -23,3 +23,5 @@ export const langOptions = [
   { identifier: "spanish", name: "Spanish" },
   { identifier: "german", name: "German" },
 ]
+
+export const GEMINI_KEY = "AIzaSyBcgiZ6abfLZ9JiiL6BgTqPikqsWBk_yvU"
