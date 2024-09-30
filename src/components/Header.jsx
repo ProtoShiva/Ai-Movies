@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth"
 import { useDispatch, useSelector } from "react-redux"
 import { addUser, removeUser } from "../redux/slices/userSlice"
 import { LOGO } from "../utils/constants"
+import { toggleGptSearch } from "../redux/slices/gptSlice"
 
 const Header = () => {
   const navigate = useNavigate()
@@ -47,14 +48,22 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-screen z-10 flex justify-between">
+    <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-full z-10 flex justify-between">
       <img className="w-48" src={LOGO} alt="netflix-logo" />
       {userInfo && (
-        <div className="flex items-center gap-2">
-          <img className="size-12" src={userInfo.photoURL} alt="userIcon" />
-          <button onClick={handleSignOut} className="text-white font-bold">
-            Sign Out
+        <div className="flex items-center gap-12">
+          <button
+            className="py-2 px-4 bg-teal-500 text-white rounded-lg"
+            onClick={() => dispatch(toggleGptSearch())}
+          >
+            GPT Search
           </button>
+          <div className="flex items-center gap-3">
+            <img className="size-12" src={userInfo.photoURL} alt="userIcon" />
+            <button onClick={handleSignOut} className="text-white font-bold">
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>
