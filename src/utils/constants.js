@@ -1,3 +1,6 @@
+import dotenv from "dotenv"
+
+dotenv.config()
 export const LOGO =
   "https://cdn.prod.website-files.com/5ee732bebd9839b494ff27cd/5ee732bebd98393d75ff281d_580b57fcd9996e24bc43c529.png"
 export const USER_AVATAR =
@@ -10,8 +13,7 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmJhZmU1MmUyMzZlNjgyOGMyYmQ4ZTY5YzM5MTA2OCIsIm5iZiI6MTcyNzYyODUxNi40MTU5NzgsInN1YiI6IjY2YTI0NzNiYmYwODhmNTI1NGY3OGRlZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XaYx5qzqv-sqS_ISRHbo5NfAfqHhyamD-GEfhYth3p4",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_TOKEN,
   },
 }
 
@@ -24,4 +26,4 @@ export const langOptions = [
   { identifier: "german", name: "German" },
 ]
 
-export const GEMINI_KEY = "AIzaSyBcgiZ6abfLZ9JiiL6BgTqPikqsWBk_yvU"
+export const GEMINI_KEY = process.env.REACT_APP_GEMINI_KEY

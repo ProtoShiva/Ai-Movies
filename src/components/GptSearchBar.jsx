@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { API_OPTIONS, GEMINI_KEY } from "../utils/constants"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import { addGptMovieResult } from "../redux/slices/gptSlice"
+import dotenv from "dotenv"
+
+dotenv.config()
 const GptSearchBar = () => {
   const langKey = useSelector((store) => store.config.lang)
   const searchText = useRef(null)
@@ -35,9 +38,6 @@ const GptSearchBar = () => {
     const gptMovies = result.response?.text().split(",")
     const promiseArray = gptMovies.map((movie) => searchGptMovies(movie))
     const tmdbResults = await Promise.all(promiseArray)
-
-    console.log(tmdbResults)
-
     dispatch(
       addGptMovieResult({ movieResult: tmdbResults, movieNames: gptMovies })
     )
