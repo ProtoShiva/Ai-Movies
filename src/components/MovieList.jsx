@@ -1,4 +1,5 @@
-import React, { useRef } from "react"
+import React from "react"
+import { Link } from "react-router-dom"
 import MovieCard from "./MovieCard"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
@@ -18,11 +19,13 @@ const MovieList = ({ title, movies }) => {
       <Slider {...settings} className="w-[98%]">
         {movies &&
           movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              poster={movie.poster_path}
-              movieTitle={movie.original_title}
-            />
+            <Link to={"/movie/" + movie.id} key={movie.id}>
+              <MovieCard
+                key={movie.id}
+                poster={movie.poster_path}
+                movieTitle={movie.original_title}
+              />
+            </Link>
           ))}
       </Slider>
     </div>
