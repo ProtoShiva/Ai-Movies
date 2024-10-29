@@ -25,15 +25,20 @@ const Login = () => {
     setIsSignInForm(!isSignInForm)
   }
 
-  //handle the form submit
-  const handleButtonClick = () => {
+  //handle the form submite
+  const handleFormSubmit = (e) => {
     //checking validation
-
-    const res = checkValidData(
-      email.current.value,
-      password.current.value
-      // name.current.value
-    )
+    e.preventDefault()
+    let res
+    if (isSignInForm) {
+      res = checkValidData(email.current.value, password.current.value)
+    } else {
+      res = checkValidData(
+        email.current.value,
+        password.current.value,
+        name.current.value
+      )
+    }
 
     setErrMessagge(res)
 
@@ -86,7 +91,7 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code
           const errorMessage = error.message
-          setErrMessagge(errorCode + "-" + errorMessage)
+          setErrMessagge("User Doesn't Exist")
         })
     }
   }
@@ -97,18 +102,12 @@ const Login = () => {
         <img src={BG_URL} alt="bg" />
       </div>
       <form
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={handleFormSubmit}
         className="w-3/12 absolute p-12 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
       >
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
-        <input
-          ref={email}
-          type="text"
-          placeholder="Email Address"
-          className="p-4 my-2 w-full bg-gray-700"
-        />
         {!isSignInForm && (
           <input
             ref={name}
@@ -119,16 +118,20 @@ const Login = () => {
         )}
 
         <input
+          ref={email}
+          type="text"
+          placeholder="Email Address"
+          className="p-4 my-2 w-full bg-gray-700"
+        />
+
+        <input
           ref={password}
           type="password"
           placeholder="Password"
           className="p-4 my-2 w-full bg-gray-700"
         />
         <p className="text-red-500 text-lg font-bold py-2">{errMessage}</p>
-        <button
-          className="p-4 my-6 w-full bg-red-600 rounded-lg"
-          onClick={handleButtonClick}
-        >
+        <button className="p-4 my-6 w-full bg-red-600 rounded-lg">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 

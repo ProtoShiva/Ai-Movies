@@ -4,7 +4,7 @@ export const USER_AVATAR =
   "https://wallpapers.com/images/hd/netflix-profile-pictures-5yup5hd2i60x7ew3.jpg"
 
 export const BG_URL =
-  "https://assets.nflxext.com/ffe/siteui/vlv3/bfc0fc46-24f6-4d70-85b3-7799315c01dd/web/IN-en-20240923-TRIFECTA-perspective_74e21c19-980e-45ef-bd6c-78c1a6ce9381_large.jpg"
+  "https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/IN-en-20241021-TRIFECTA-perspective_2277eb50-9da3-4fdf-adbe-74db0e9ee2cf_large.jpg"
 
 export const API_OPTIONS = {
   method: "GET",
@@ -14,7 +14,7 @@ export const API_OPTIONS = {
   },
 }
 
-export const POSTER_URL = "https://image.tmdb.org/t/p/w500"
+export const POSTER_URL = "https://image.tmdb.org/t/p/w780"
 
 export const langOptions = [
   { identifier: "en", name: "English" },
