@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { onAuthStateChanged, signOut } from "firebase/auth"
 import { useDispatch, useSelector } from "react-redux"
 import { addUser, removeUser } from "../redux/slices/userSlice"
@@ -10,6 +10,8 @@ import { changeLanguages } from "../redux/slices/configSlice"
 
 const Header = () => {
   const navigate = useNavigate()
+  const location = useLocation()
+
   const dispatch = useDispatch()
   const userInfo = useSelector((store) => store.user)
   const gptSearch = useSelector((store) => store.gpt.showGptSearch)
@@ -36,7 +38,8 @@ const Header = () => {
             photoURL: photoURL,
           })
         )
-        navigate("/browse")
+        if (location.pathname === "/browse" || location.pathname === "/")
+          navigate("/browse")
       } else {
         // User is signed out
         dispatch(removeUser())
@@ -55,7 +58,9 @@ const Header = () => {
 
   return (
     <div className="absolute px-8 py-2 bg-gradient-to-b from-black w-full z-10 flex justify-between">
-      <img className="w-48" src={LOGO} alt="netflix-logo" />
+      <Link to={"/browse"}>
+        <img className="w-48" src={LOGO} alt="netflix-logo" />
+      </Link>
       {userInfo && (
         <div className="flex items-center gap-12">
           {gptSearch && (

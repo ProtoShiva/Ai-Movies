@@ -1,11 +1,10 @@
 import { useEffect } from "react"
 import { API_OPTIONS } from "../utils/constants"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addPlatforms } from "../redux/slices/singleMovieSlice"
 
 export const usePlatforms = (id) => {
   const dispatch = useDispatch()
-  const platform = useSelector((store) => store.singleMovie.platforms)
 
   async function fetchPlatforms() {
     const response = await fetch(
@@ -18,6 +17,6 @@ export const usePlatforms = (id) => {
   }
 
   useEffect(() => {
-    if (!platform) fetchPlatforms()
+    fetchPlatforms()
   }, [])
 }

@@ -1,12 +1,10 @@
 import { useEffect } from "react"
 import { API_OPTIONS } from "../utils/constants"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addCastDetail } from "../redux/slices/singleMovieSlice"
 
 export const useMovieCast = (id) => {
   const dispatch = useDispatch()
-
-  const cast = useSelector((store) => store.singleMovie.castDetail)
 
   async function fetchCast() {
     const response = await fetch(
@@ -19,6 +17,6 @@ export const useMovieCast = (id) => {
   }
 
   useEffect(() => {
-    if (!cast) fetchCast()
+    fetchCast()
   }, [])
 }

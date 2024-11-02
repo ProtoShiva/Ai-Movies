@@ -15,6 +15,8 @@ export const API_OPTIONS = {
 }
 
 export const POSTER_URL = "https://image.tmdb.org/t/p/w780"
+export const BGPOSTER_URL = "https://image.tmdb.org/t/p/w1280"
+export const PLATFORM_URL = "https://image.tmdb.org/t/p/w500"
 
 export const langOptions = [
   { identifier: "en", name: "English" },

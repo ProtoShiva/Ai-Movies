@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { addSimilarMovies } from "../redux/slices/singleMovieSlice"
 import { useEffect } from "react"
 import { API_OPTIONS } from "../utils/constants"
 
 export const useSimilarMovies = (id) => {
   const dispatch = useDispatch()
-  const similarMovies = useSelector((store) => store.singleMovie.similarMovies)
 
   async function fetchSimilarMovies() {
     const response = await fetch(
@@ -18,6 +17,6 @@ export const useSimilarMovies = (id) => {
   }
 
   useEffect(() => {
-    if (!similarMovies) fetchSimilarMovies()
+    fetchSimilarMovies()
   }, [])
 }
