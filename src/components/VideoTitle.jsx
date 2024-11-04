@@ -1,17 +1,21 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
-const VideoTitle = ({ title, overview }) => {
+const VideoTitle = ({ title, overview, id }) => {
   return (
     <div className="w-full aspect-video pt-[13%] px-24 absolute text-white bg-gradient-to-r from from-black">
-      <h1 className="text-6xl font-bold">{title}</h1>
+      <h1 className="text-6xl font-bold">
+        {title}
+        <span>{}</span>
+      </h1>
       <p className="py-6 text-lg w-[45%]">{overview}</p>
       <div>
-        <button className="bg-gray-500 text-white p-4 px-16 text-xl rounded-lg hover:bg-opacity-50">
-          Play
-        </button>
-        <button className="mx-2 bg-gray-500 text-white p-4 px-12 text-xl rounded-lg bg-opacity-50">
+        <Link
+          to={`/movie/${id}`}
+          className="bg-gray-500 text-white p-4 px-16 text-xl rounded-lg hover:bg-opacity-50"
+        >
           More Info
-        </button>
+        </Link>
       </div>
     </div>
   )

@@ -49,7 +49,7 @@ const MovieDetails = () => {
               <div className="flex items-center gap-2">
                 <FaStar className="size-6 text-yellow-400" />
                 <p>
-                  {movieDetails?.vote_average.toFixed(2)}
+                  {movieDetails?.vote_average.toFixed(1)}
                   <span className="ml-1">
                     ({convertToK(movieDetails?.vote_count)})
                   </span>
