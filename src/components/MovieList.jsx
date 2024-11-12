@@ -1,33 +1,33 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import MovieCard from "./MovieCard"
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules"
+import "swiper/swiper-bundle.css"
 
 const MovieList = ({ title, movies }) => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 8,
-    slidesToScroll: 8,
-  }
   return (
     <div className="px-1">
       <h1 className="text-3xl py-4 text-white">{title}</h1>
-      <Slider {...settings} className="w-[98%]">
+      <Swiper
+        slidesPerView={8}
+        slidesPerGroup={5}
+        loop={true}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
         {movies &&
           movies.map((movie) => (
-            <Link to={"/movie/" + movie.id} key={movie.id}>
-              <MovieCard
-                key={movie.id}
-                poster={movie.poster_path}
-                movieTitle={movie.original_title}
-              />
-            </Link>
+            <SwiperSlide key={movie.id}>
+              <Link to={"/movie/" + movie.id}>
+                <MovieCard
+                  poster={movie.poster_path}
+                  movieTitle={movie.original_title}
+                />
+              </Link>
+            </SwiperSlide>
           ))}
-      </Slider>
+      </Swiper>
     </div>
   )
 }
