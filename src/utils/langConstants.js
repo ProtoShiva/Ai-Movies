@@ -1,18 +1,18 @@
 export const lang = {
   en: {
-    search: "search",
-    gptPlaceholder: "What would you like to watch today?",
+    search: "Search",
+    gptPlaceholder: "What's your mood ?",
   },
   hindi: {
     search: "खोज",
-    gptPlaceholder: "आज आप क्या देखना चाहेंगे?",
+    gptPlaceholder: "तुम्हारा मूड कैसा है ?",
   },
   spanish: {
     search: "buscar",
-    gptPlaceholder: "¿Qué te gustaría ver hoy?",
+    gptPlaceholder: "¿Cuál es tu estado de ánimo?",
   },
   german: {
     search: "suchen",
-    gptPlaceholder: "Was möchtest du heute sehen?",
+    gptPlaceholder: "Wie ist deine Stimmung?",
   },
 }

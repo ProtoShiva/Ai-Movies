@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa"
 
 const GptSearchResult = ({ movie }) => {
   return (
-    <div className="w-44 h-56  cursor-pointer" key={movie[0].id}>
+    <div className="w-32 lg:w-40 xl:w-56  cursor-pointer" key={movie[0].id}>
       <img
         src={POSTER_URL + movie[0].poster_path}
         alt={movie[0].title + " Poster"}

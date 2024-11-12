@@ -9,7 +9,7 @@ const GptMovieSuggestion = () => {
   if (!movieName) return null
 
   return (
-    <div className="pt-16 pb-24 pl-6 m-4 h-fit bg-black text-white bg-opacity-60 flex justify-between ">
+    <div className="m-4 bg-black text-white bg-opacity-60 grid grid-cols-2 gap-2 justify-items-center py-8 sm:grid-cols-4 md:grid-cols-5">
       {movieResult?.map((movie) => (
         <GptSearchResult movie={movie} />
       ))}
