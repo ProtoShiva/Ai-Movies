@@ -103,9 +103,9 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleFormSubmit}
-        className="w-[80%] sm:w-[55%] lg:w-[24%] absolute inset-0 p-12 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
+        className="w-[80%] md:w-[45%] xl:w-[28%] h-fit absolute -top-8 inset-0 p-8 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="font-bold text-2xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
@@ -113,7 +113,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="p-4 my-2 w-full bg-gray-700"
+            className="p-2 md:p-4 my-2 w-full text-sm bg-gray-700"
           />
         )}
 
@@ -121,17 +121,17 @@ const Login = () => {
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-2 w-full bg-gray-700"
+          className="p-2 md:p-4 my-2 w-full text-sm bg-gray-700"
         />
 
         <input
           ref={password}
           type="password"
           placeholder="Password"
-          className="p-4 my-2 w-full bg-gray-700"
+          className="p-2 md:p-4 my-2 text-sm w-full bg-gray-700"
         />
         <p className="text-red-500 text-lg font-bold py-2">{errMessage}</p>
-        <button className="p-4 my-6 w-full bg-red-600 rounded-lg">
+        <button className="p-2 md:p-4 my-6 w-full bg-red-600 rounded-lg">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
