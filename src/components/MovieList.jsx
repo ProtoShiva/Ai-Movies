@@ -9,13 +9,7 @@ const MovieList = ({ title, movies }) => {
   return (
     <div className="px-1">
       <h1 className="text-3xl py-4 text-white">{title}</h1>
-      <Swiper
-        slidesPerView={8}
-        slidesPerGroup={5}
-        loop={true}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      >
+      <Swiper slidesPerView={8} slidesPerGroup={4} loop={true}>
         {movies &&
           movies.map((movie) => (
             <SwiperSlide key={movie.id}>
