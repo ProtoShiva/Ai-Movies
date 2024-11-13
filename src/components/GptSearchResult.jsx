@@ -4,9 +4,9 @@ import { FaStar } from "react-icons/fa"
 
 const GptSearchResult = ({ movie }) => {
   return (
-    <div className="w-32 lg:w-40 xl:w-56  cursor-pointer" key={movie[0].id}>
+    <div className="w-32 lg:w-40 xl:w-56  cursor-pointer">
       <img
-        src={POSTER_URL + movie[0].poster_path}
+        src={POSTER_URL + movie[0]?.poster_path}
         alt={movie[0].title + " Poster"}
         className="rounded-md "
       />
@@ -15,7 +15,7 @@ const GptSearchResult = ({ movie }) => {
           <span className="text-yellow-500">
             <FaStar />
           </span>
-          {movie[0].vote_average.toFixed(1)}
+          {movie[0]?.vote_average.toFixed(1)}
         </p>
       </div>
     </div>

@@ -60,7 +60,7 @@ const GptSearchBar = () => {
           className="px-4 w-[60%] text-sm lg:text-lg"
         />
         <button
-          className="bg-red-700  text-white rounded-lg lg:text-lg px-6 py-2"
+          className="bg-red-700  text-white rounded-lg  px-6 py-2"
           onClick={handleGptSearchClick}
         >
           {loading ? "searching..." : lang[langKey].search}

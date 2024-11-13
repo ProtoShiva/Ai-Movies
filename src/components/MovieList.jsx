@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 import MovieCard from "./MovieCard"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules"
 import "swiper/swiper-bundle.css"
 
 const MovieList = ({ title, movies }) => {
