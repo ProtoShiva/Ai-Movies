@@ -59,7 +59,7 @@ const Header = () => {
   }
 
   return (
-    <div className="px-4 relative z-40 py-2 bg-gradient-to-b from-black w-full  flex justify-between items-center">
+    <div className="px-4 relative z-40 bg-gradient-to-b from-black w-full  flex justify-between items-center">
       <Link to={"/browse"}>
         <img className="w-32 xl:w-48" src={LOGO} alt="netflix-logo" />
       </Link>
