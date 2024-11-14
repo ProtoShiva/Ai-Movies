@@ -3,14 +3,16 @@ import { getAnalytics } from "firebase/analytics"
 import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDUEyZaXTbYZyCuhwD5rp1DpEiEIAXQzk0",
-  authDomain: "movies-gpt-708a9.firebaseapp.com",
-  projectId: "movies-gpt-708a9",
-  storageBucket: "movies-gpt-708a9.appspot.com",
-  messagingSenderId: "1002362749974",
-  appId: "1:1002362749974:web:f843992cf9f71ecf4d6137",
-  measurementId: "G-XT3KTTH6N6",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 }
+
+// Initialize Firebase
 
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)

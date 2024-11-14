@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "firebase/auth"
 import { auth } from "../utils/firebase"
-import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { addUser } from "../redux/slices/userSlice"
 import { BG_URL, USER_AVATAR } from "../utils/constants"
@@ -103,7 +102,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleFormSubmit}
-        className="w-[80%] md:w-[45%] xl:w-[28%] h-fit absolute -top-8 inset-0 p-8 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
+        className="w-[80%] md:w-[45%] xl:w-[23%] h-fit absolute -top-8 inset-0 p-8 bg-black bg-opacity-75 text-white my-36 mx-auto right-0 left-0"
       >
         <h1 className="font-bold text-2xl py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
